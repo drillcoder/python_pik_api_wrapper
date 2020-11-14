@@ -5,12 +5,12 @@ from pik_wrapper.value_object.photo import Photo
 
 
 class Item(Entity):
-    def __init__(self, id_or_dict, public_date: str = None, date: str = None, photos: List[Photo] = None):
+    def __init__(self, id_or_dict, public_date: str = None, date: str = None, photos: List[Photo] = list):
         super().__init__(id_or_dict)
         if type(id_or_dict) is dict:
             public_date = id_or_dict.get('public_date')
             date = id_or_dict.get('date')
-            photos = id_or_dict.get('photos')
+            photos = id_or_dict.get('photos', [])
         if type(public_date) is not str:
             raise ValueError
         self.public_date = public_date
