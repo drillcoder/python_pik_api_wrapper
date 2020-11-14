@@ -5,7 +5,7 @@ class Photo(ValueObject):
     def __init__(self, url_or_dict, sort: int = None):
         url = url_or_dict
         if isinstance(url_or_dict, dict):
-            url = url_or_dict.get('id')
+            url = url_or_dict.get('url')
             sort = url_or_dict.get('sort')
         if type(url) is not str:
             raise ValueError
