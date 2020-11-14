@@ -1,5 +1,8 @@
 class Entity:
-    def __init__(self, id: str):
+    def __init__(self, id_or_dict):
+        id = id_or_dict
+        if type(id_or_dict) is dict:
+            id = id_or_dict.get('id')
         if type(id) is not str:
             raise ValueError
         self.id = id

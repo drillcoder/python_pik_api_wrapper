@@ -2,8 +2,12 @@ from pik_wrapper.entity.entity import Entity
 
 
 class Bulk(Entity):
-    def __init__(self, id: str, name: str, sort: int, type_id: int):
-        super().__init__(id)
+    def __init__(self, id_or_dict, name: str = None, sort: int = None, type_id: int = None):
+        super().__init__(id_or_dict)
+        if type(id_or_dict) is dict:
+            name = id_or_dict.get('name')
+            sort = id_or_dict.get('sort')
+            type_id = id_or_dict.get('type_id')
         if type(name) is not str:
             raise ValueError
         self.name = name

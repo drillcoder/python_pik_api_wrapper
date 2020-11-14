@@ -19,7 +19,7 @@ class PikWrapper:
             'wrapper': 'https://github.com/drillcoder/python_pik_api_wrapper'
         }
 
-    def send_request(self, url:str) -> List:
+    def send_request(self, url: str) -> List:
         if type(url) is not str:
             raise ValueError
         response = requests.get(self.base_url + url, headers=self.headers)
