@@ -69,7 +69,7 @@ class PikWrapper:
         for bulk in bulks:
             if bulk['type_id'] not in {1, 2, 103} or len(bulk['name']) == 0:
                 continue
-            bulks_list.append(Bulk(str(bulk['id']), bulk['name'], count))
+            bulks_list.append(Bulk(str(bulk['id']), bulk['name'], count, bulk['type_id']))
             count += 1
         return bulks_list
 
