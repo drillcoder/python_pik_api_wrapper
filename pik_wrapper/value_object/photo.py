@@ -1,4 +1,4 @@
-from python_pik_api_wrapper.value_object.value_object import ValueObject
+from pik_wrapper.value_object.value_object import ValueObject
 
 
 class Photo(ValueObject):

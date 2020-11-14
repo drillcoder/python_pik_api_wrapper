@@ -1,7 +1,7 @@
 from typing import List
 
-from python_pik_api_wrapper.entity.entity import Entity
-from python_pik_api_wrapper.value_object.photo import Photo
+from pik_wrapper.entity.entity import Entity
+from pik_wrapper.value_object.photo import Photo
 
 
 class Item(Entity):

@@ -1,12 +1,11 @@
 from setuptools import setup, find_packages
 
+import pik_wrapper
+
 setup(name='python_pik_api_wrapper',
-      version='1.1',
+      version=pik_wrapper.__version__,
       description='Wrapper for the PIK Group website API',
-      classifiers=[
-          'Programming Language :: Python :: 3.6',
-      ],
-      keywords='pik wrapper python',
+      keywords='pik, wrapper, python',
       url='https://github.com/drillcoder/python_pik_api_wrapper',
       author='DrillCoder',
       author_email='nitrodrill@ya.ru',

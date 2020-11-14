@@ -2,11 +2,11 @@ from typing import List
 
 import requests
 
-from python_pik_api_wrapper.entity.block import Block
-from python_pik_api_wrapper.entity.bulk import Bulk
-from python_pik_api_wrapper.entity.item import Item
-from python_pik_api_wrapper.entity.location import Location
-from python_pik_api_wrapper.value_object.photo import Photo
+from pik_wrapper.entity.block import Block
+from pik_wrapper.entity.bulk import Bulk
+from pik_wrapper.entity.item import Item
+from pik_wrapper.entity.location import Location
+from pik_wrapper.value_object.photo import Photo
 
 
 class PikWrapper:

@@ -1,4 +1,4 @@
-from python_pik_api_wrapper.entity.entity import Entity
+from pik_wrapper.entity.entity import Entity
 
 
 class Block(Entity):
