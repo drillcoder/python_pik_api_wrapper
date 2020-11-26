@@ -79,17 +79,19 @@ class PikWrapper:
         items = self.send_request(f"news?limit=all&is_content=1&is_progress=1&bulk_id={bulk.id}")
         items_list = []
         for item in items:
-            url = 'https:' + item['preview']
-            images_path = [item['preview']]
-            photos = [Photo(url, 0)]
-            sort = 1
+            photos = []
+            images_path = []
+            sort = 0
+            if item['preview'] != '':
+                images_path.append(item['preview'])
+                photos.append(Photo('https:' + item['preview'], 0))
+                sort += 1
             if type(item.get('gallery')) is list:
                 for photo in item['gallery']:
                     if photo['file_path'] in images_path:
                         continue
                     images_path.append(photo['file_path'])
-                    url = 'https:' + photo['file_path']
-                    photos.append(Photo(url, sort))
+                    photos.append(Photo('https:' + photo['file_path'], sort))
                     sort += 1
             items_list.append(Item(item['id'], item['public_date'], item['date'], photos))
         return items_list
