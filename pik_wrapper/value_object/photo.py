@@ -3,7 +3,7 @@ from pik_wrapper.value_object.value_object import ValueObject
 
 class Photo(ValueObject):
     """
-    :type url_or_dict: str
+    :type url: str
     :type sort: int
     """
     def __init__(self, url_or_dict, sort: int = None):
