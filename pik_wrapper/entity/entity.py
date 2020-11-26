@@ -1,4 +1,8 @@
 class Entity:
+    """
+    :type id: str
+    """
+
     def __init__(self, id_or_dict):
         id = id_or_dict
         if type(id_or_dict) is dict:

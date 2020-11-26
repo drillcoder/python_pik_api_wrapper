@@ -2,6 +2,11 @@ from pik_wrapper.entity.entity import Entity
 
 
 class Block(Entity):
+    """
+    :type name: str
+    :type sort: int
+    """
+
     def __init__(self, id_or_dict, name: str = None, sort: int = None):
         super().__init__(id_or_dict)
         if type(id_or_dict) is dict:

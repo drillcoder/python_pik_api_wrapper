@@ -5,6 +5,11 @@ from pik_wrapper.value_object.photo import Photo
 
 
 class Item(Entity):
+    """
+    :type public_date: str
+    :type date: int
+    :type photos: List[Photo]
+    """
     def __init__(self, id_or_dict, public_date: str = None, date: str = None, photos: List[Photo] = list):
         super().__init__(id_or_dict)
         if type(id_or_dict) is dict:
