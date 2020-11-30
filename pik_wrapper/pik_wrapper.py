@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 import requests
 
@@ -60,14 +60,33 @@ class PikWrapper:
             blocks_list.append(Block(str(block['id']), block['name'], block['sort']))
         return blocks_list
 
-    def get_bulks(self, block: Block) -> List[Bulk]:
+    def get_all_blocks(self, locations: List[Location]) -> Dict[str, List[Block]]:
+        if type(locations) is not list:
+            raise ValueError
+        location_id_list = []
+        for location in locations:
+            if type(location) is not Location:
+                raise ValueError
+            location_id_list.append(location.id)
+        blocks = self.send_request(f"block?metadata=1&types=1,2&locations={','.join(location_id_list)}")
+        blocks_list = {}
+        for block in blocks:
+            location_id = str(block['locations']['parent']['id'])
+            if location_id == '1':
+                location_id = str(block['locations']['child']['id'])
+            if blocks_list.get(location_id) is None:
+                blocks_list[location_id] = []
+            blocks_list[location_id].append(Block(str(block['id']), block['name'], block['sort']))
+        return blocks_list
+
+    def get_bulks(self, block: Block, only_settlement_fact: bool = False) -> List[Bulk]:
         if type(block) is not Block:
             raise ValueError
-        bulks = self.send_request(f"bulk?block_id={block.id}")
+        bulks = self.send_request(f"bulk?block_id={block.id}&type=1,2,103")
         bulks_list = []
         count = 0
         for bulk in bulks:
-            if bulk['type_id'] not in {1, 2, 103} or len(bulk['name']) == 0:
+            if len(bulk['name']) == 0 or (only_settlement_fact and bulk['settlement_fact']):
                 continue
             bulks_list.append(Bulk(str(bulk['id']), bulk['name'], count, bulk['type_id']))
             count += 1
