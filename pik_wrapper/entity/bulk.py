@@ -15,6 +15,7 @@ class Bulk(Entity):
             name = id_or_dict.get('name')
             sort = id_or_dict.get('sort')
             type_id = id_or_dict.get('type_id', 0)
+            settlement_fact = bool(id_or_dict.get('settlement_fact', 0))
         if type(name) is not str:
             raise ValueError
         self.name = name
