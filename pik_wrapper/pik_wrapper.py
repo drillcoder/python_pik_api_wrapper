@@ -86,7 +86,7 @@ class PikWrapper:
         bulks_list = []
         count = 0
         for bulk in bulks:
-            if bulk['name'] is None or len(bulk['name']) == 0 or (only_settlement_fact and bulk['settlement_fact']):
+            if (bulk['name'] is None and len(bulk['name']) == 0) or (only_settlement_fact and bulk['settlement_fact']):
                 continue
             bulks_list.append(Bulk(str(bulk['id']), bulk['name'], count, bulk['type_id'], bulk['settlement_fact']))
             count += 1
